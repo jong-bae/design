@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><title>칸반 단계 구분 검토</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;width:1600px;background:#fff;color:#31374a;font-family:"Noto Sans KR","Malgun Gothic",sans-serif;padding:36px 40px 40px}
+h1{margin:0 0 6px;font-size:26px;color:#141824}
+.sub{color:#6e7891;font-size:14px;margin-bottom:22px}
+.verdict{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:16px;margin-bottom:26px}
+.v{border-radius:10px;padding:14px 16px;font-size:13.5px;line-height:1.55;border:1px solid #cbd0dd}
+.v b{display:block;font-size:15px;margin-bottom:4px}
+.v.main{background:#eaf7ee;border-color:#9fd8b0}
+.v.bad{background:#fdeeee;border-color:#f1b3b3}
+.v.neu{background:#f5f7fa}
+.panel{margin-bottom:22px}
+.ptitle{display:flex;align-items:baseline;gap:12px;margin-bottom:8px}
+.tag{font-size:12px;font-weight:700;padding:2px 9px;border-radius:99px;color:#fff}
+.t-a{background:#6e7891}.t-b{background:#d9534f}.t-c{background:#25b003}
+.ptitle h2{margin:0;font-size:18px;color:#141824}
+.ptitle span.d{font-size:13px;color:#6e7891}
+.stage{background:#f5f7fa;border:1px solid #e3e6ed;border-radius:12px;padding:18px;display:flex;gap:26px;align-items:stretch}
+.col{width:286px;flex:none;position:relative}
+.head{display:flex;align-items:center;margin-bottom:12px;font-size:15px;font-weight:700;color:#31374a}
+.head small{font-weight:400;color:#8a94ad;margin-left:8px;font-size:12px}
+.head .dots{margin-left:auto;color:#8a94ad;letter-spacing:1px}
+.pill{font-size:10px;border:1px solid #cbd0dd;border-radius:5px;padding:1px 6px;margin-left:8px;color:#8a94ad;font-weight:400}
+.card{background:#fff;border:1px solid #e3e6ed;border-radius:8px;padding:11px 13px;margin-bottom:10px;box-shadow:0 1px 2px rgba(20,24,36,.04)}
+.card .n{color:#3874ff;font-weight:700;font-size:15px}
+.card .m{font-size:11px;color:#9aa3b8;margin:3px 0 8px}
+.lbl{border-radius:6px;padding:5px 8px;font-size:11px;font-weight:700;margin-bottom:6px}
+.l-pri{background:rgba(56,116,255,.1);color:#3874ff}
+.l-inf{background:rgba(0,133,220,.1);color:#0085dc}
+.l-war{background:rgba(229,120,11,.12);color:#e5780b}
+.dt{text-align:right;font-size:11px;color:#9aa3b8}
+.off{opacity:.5}
+/* B: 단계별 색상 */
+.b .col{border-top:4px solid var(--c);border-radius:6px 6px 0 0;padding:0}
+.b .head{background:var(--bg);padding:8px 10px;margin-bottom:10px}
+.b .head{color:var(--c)}
+.b .col .cards{padding:0 0}
+/* C: 중립 레인 */
+.c .col{background:#eaedf2;padding-bottom:2px;border:1px solid #dfe3ea;border-radius:10px;padding:12px 12px 4px}
+.c .col.hot{background:#e1e8fb;border-color:#9db8ff;outline:2px dashed #3874ff;outline-offset:-6px}
+.note{position:absolute;font-size:11.5px;font-weight:700;color:#c0392b;background:#fff;border:1.5px solid #e08a84;border-radius:6px;padding:3px 8px;z-index:3;white-space:nowrap}
+.cnote{position:absolute;font-size:11.5px;font-weight:700;color:#1a7d05;background:#fff;border:1.5px solid #86cf72;border-radius:6px;padding:3px 8px;z-index:3;white-space:nowrap}
+.foot{margin-top:6px;font-size:13px;color:#4a5370;line-height:1.7;background:#f5f7fa;border-radius:10px;padding:14px 18px}
+.foot b{color:#141824}
+</style></head><body>
+<h1>칸반 단계 구분 디자인 검토</h1>
+<div class="sub">채용공고 보드(pipeline.html) · Phoenix 테마 · 결론부터 — 단계별 “색”은 넣지 말고, 중립 톤의 칸(레인)만 약하게 깔아주는 정도가 적절</div>
+
+<div class="verdict">
+  <div class="v main"><b>✔ 권장 · 중립 레인 배경 (색 X, 면 O)</b>단계마다 다른 색이 아니라, 모든 단계에 같은 연회색 면을 깔아 “여기까지가 한 단계”라는 경계만 만든다. 빈 단계(지원접수 0명)도 칸으로 보여 드래그 목적지가 분명해진다.</div>
+  <div class="v bad"><b>✘ 비권장 · 단계별 색상</b>① 단계는 공고마다 개수·이름이 달라 색 배정 규칙이 없음 ② 카드 라벨이 이미 파랑·하늘·주황·초록·빨강을 상태색으로 사용 중 → 의미 충돌 ③ 단계 순서에 색 위계가 없어 정보가 늘지 않음</div>
+  <div class="v neu"><b>현재 상태 진단</b>카드(흰색)와 배경(#f5f7fa)의 대비가 약해 컬럼 폭이 안 보이고, 빈 컬럼은 헤더만 떠 있음. 우측이 잘려도(가로 스크롤) 단계 경계 단서가 없음. 심각한 문제는 아니라 “약한 개선” 수준.</div>
+</div>
+
+<!-- A -->
+<div class="panel">
+  <div class="ptitle"><span class="tag t-a">A</span><h2>현재</h2><span class="d">컬럼 경계 없음 · 헤더와 카드 사이 여백만으로 구분</span></div>
+  <div class="stage a" id="A"></div>
+</div>
+<!-- B -->
+<div class="panel">
+  <div class="ptitle"><span class="tag t-b">B</span><h2>단계별 색상을 넣은 경우 (비권장)</h2><span class="d">구분은 되지만, 카드 라벨 색과 겹쳐 “주황 칸의 주황 라벨”처럼 의미가 흐려짐</span></div>
+  <div class="stage b" id="B"></div>
+</div>
+<!-- C -->
+<div class="panel">
+  <div class="ptitle"><span class="tag t-c">C</span><h2>중립 레인 배경 (권장)</h2><span class="d">모든 단계 동일한 연회색 면 · 카드 흰색이 떠 보이고, 빈 단계도 칸으로 인식 · 드래그 중 대상 칸만 강조</span></div>
+  <div class="stage c" id="C"></div>
+</div>
+
+<div class="foot">
+<b>적용 시 최소 변경 (pipeline.html의 .deals-col 한 곳)</b> — 배경 <b>rgba(var(--phoenix-secondary-bg-rgb), .6)</b> 수준(다크모드 자동 대응), <b>border-radius 10px</b>, 안쪽 여백 <b>12px</b>. 드래그 중 대상 칸은 Sortable의 <b>dragover</b> 클래스로 연한 primary 면만 추가. 비활성 단계는 기존 <b>opacity-50</b> 유지.<br>
+<b>주의</b> — 레인 면을 넣으면 컬럼 하나가 차지하는 폭이 약 24px 늘어 가로 스크롤이 조금 더 길어지므로, 칸 사이 간격(현재 약 26px)을 12~16px로 줄여 상쇄.
+</div>
+
+<script>
+const steps=[
+ {name:'지원접수',cnt:0,c:'#6e7891',bg:'#eef0f4',cards:[]},
+ {name:'서류전형',cnt:2,c:'#7c4dff',bg:'#efe9ff',cards:[
+   {n:'이꺾정',m:'0 · 2',l:['l-pri','면접요청됨'],d:'11.19'},
+   {n:'김길동',m:'0 · 2',l:['l-war','서류합격'],d:'11.19'}]},
+ {name:'인성역량검사',cnt:0,c:'#00a3a3',bg:'#e0f6f6',off:true,cards:[]},
+ {name:'면접',cnt:2,c:'#e5780b',bg:'#fdf0e1',cards:[
+   {n:'이건희 ★',m:'1 · 2',l:['l-pri','면접요청됨'],d:'10.28'},
+   {n:'박꺽정',m:'0 · 3',l:['l-inf','면접확정'],d:'11.13'}]}
+];
+function col(s,mode){
+  const cards=s.cards.map(k=>`<div class="card"><div class="n">${k.n}</div><div class="m">💬 ${k.m.split(' · ')[0]} &nbsp; 📎 ${k.m.split(' · ')[1]}</div><div class="lbl ${k.l[0]}">${k.l[1]}</div><div class="dt">${k.d}</div></div>`).join('');
+  const hot = mode==='C' && s.name==='지원접수';
+  return `<div class="col ${s.off?'off':''} ${hot?'hot':''}" style="--c:${s.c};--bg:${s.bg}"><div class="head">${s.name}<small>(${s.cnt})</small>${s.off?'<span class="pill">비활성</span>':''}<span class="dots">···</span></div>${cards}</div>`;
+}
+for(const m of ['A','B','C']){
+  document.getElementById(m).innerHTML=steps.map(s=>col(s,m)).join('');
+}
+// 주석
+const B=document.getElementById('B').children;
+B[2].insertAdjacentHTML('beforeend','<div class="note" style="left:8px;top:70px">서류전형: 보라 칸 + 파랑 라벨 + 주황 라벨</div><div class="note" style="left:8px;top:110px">면접: 주황 칸 ≠ 주황 “서류합격” 라벨</div><div class="note" style="left:8px;top:150px">단계가 늘면 쓸 색이 없음</div>');
+const C=document.getElementById('C').children;
+C[0].insertAdjacentHTML('beforeend','<div class="cnote" style="left:16px;top:120px">빈 단계도 칸으로 보임 (드래그 중 강조 예시)</div>');
+C[1].insertAdjacentHTML('beforeend','<div class="cnote" style="left:150px;top:-3px;display:none">x</div>');
+</script>
+</body></html>
