@@ -1,0 +1,246 @@
+<!-- 채용담당자 대시보드 개선 시안 (정적 HTML, 기준일 2026.11.25(수) 11:20 가상 데이터) -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>채용 대시보드 개선 시안</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="dashboard-redesign.css">
+</head>
+<body>
+<div class="page">
+  <nav class="mock-nav" aria-label="시안 이동">
+    <a href="dashboard-hr-redesign.html" aria-current="page">채용담당자</a>
+    <a href="dashboard-evaluator-redesign.html">평가자</a>
+  </nav>
+
+  <p class="crumb">채용 / 대시보드</p>
+  <header class="head">
+    <div>
+      <h1>채용 대시보드</h1>
+      <p class="lede">일정 조율이 5일 넘게 멈춘 면접이 <span class="hot">1건</span> 있어요. 오늘 남은 확정 면접은 5건이에요.</p>
+    </div>
+    <div class="actions">
+      <a class="btn" href="#">새로고침</a>
+      <a class="btn primary" href="#">새 공고 등록</a>
+    </div>
+  </header>
+
+  <dl class="card strip">
+    <div class="metric">
+      <dt>진행중인 공고</dt>
+      <dd><span class="v">14<small>건</small></span><span class="note"><span class="up">+3</span> 이번 달 시작</span></dd>
+    </div>
+    <div class="metric">
+      <dt>전체 지원자</dt>
+      <dd><span class="v">386<small>명</small></span><span class="note"><span class="up">+52</span> 이번 달 신규 지원</span></dd>
+    </div>
+    <div class="metric">
+      <dt>채용 진행중</dt>
+      <dd><span class="v">91<small>명</small></span><span class="note">합격·불합격이 아직 정해지지 않은 지원자</span></dd>
+    </div>
+  </dl>
+
+  <div class="cols">
+    <section class="card span-7" aria-labelledby="pending-h">
+      <div class="card-h">
+        <h2 id="pending-h">일정 조율 대기<span class="n">4건</span></h2>
+        <small>오래 기다린 순</small>
+      </div>
+      <ul class="rows">
+        <li><a class="row hot" href="#">
+          <div class="lead"><span class="num">5</span><span class="unit">일</span><small>경과</small></div>
+          <div><span class="who">임태양</span><span class="sub">IT 개발자</span><div class="meta"><span>서류전형</span></div></div>
+          <div class="end">지원자 응답 대기</div>
+        </a></li>
+        <li><a class="row warn" href="#">
+          <div class="lead"><span class="num">3</span><span class="unit">일</span><small>경과</small></div>
+          <div><span class="who">한서윤</span><span class="sub">마케팅 매니저</span><div class="meta"><span>1차 면접</span></div></div>
+          <div class="end">지원자 응답 대기</div>
+        </a></li>
+        <li><a class="row warn" href="#">
+          <div class="lead"><span class="num">2</span><span class="unit">일</span><small>경과</small></div>
+          <div><span class="who">오지훈</span><span class="sub">서비스 기획</span><div class="meta"><span>2차 면접</span></div></div>
+          <div class="end">지원자 응답 대기</div>
+        </a></li>
+        <li><a class="row" href="#">
+          <div class="lead"><span class="num">오늘</span><small>요청</small></div>
+          <div><span class="who">윤하린</span><span class="sub">브랜드 디자이너</span><div class="meta"><span>1차 면접</span></div></div>
+          <div class="end">지원자 응답 대기</div>
+        </a></li>
+      </ul>
+    </section>
+
+    <section class="card span-5" aria-labelledby="confirmed-h">
+      <div class="card-h">
+        <h2 id="confirmed-h">확정된 면접<span class="n">5건</span></h2>
+        <small>가까운 순</small>
+      </div>
+      <ul class="rows">
+        <li><a class="row" href="#">
+          <div class="lead t today"><small>오늘</small><span class="num">14:00</span></div>
+          <div><span class="who">김도윤</span><span class="sub">마케팅 매니저</span><div class="meta"><span>2차 면접</span><span>대회의실 B</span></div></div>
+          <span></span>
+        </a></li>
+        <li><a class="row" href="#">
+          <div class="lead t today"><small>오늘</small><span class="num">14:00</span></div>
+          <div><span class="who">서민재</span><span class="sub">IT 개발자</span><div class="meta"><span>1차 면접</span><span>회의실 A</span></div></div>
+          <span></span>
+        </a></li>
+        <li><a class="row" href="#">
+          <div class="lead t today"><small>오늘</small><span class="num">14:30</span></div>
+          <div><span class="who">한예진</span><span class="sub">IT 개발자</span><div class="meta"><span>1차 면접</span><span>회의실 A</span></div></div>
+          <span></span>
+        </a></li>
+        <li><a class="row" href="#">
+          <div class="lead t today"><small>오늘</small><span class="num">15:00</span></div>
+          <div><span class="who">노은지</span><span class="sub">브랜드 디자이너</span><div class="meta"><span>1차 면접</span><span>대회의실 B</span></div></div>
+          <span></span>
+        </a></li>
+        <li><a class="row" href="#">
+          <div class="lead t today"><small>오늘</small><span class="num">15:30</span></div>
+          <div><span class="who">임재현</span><span class="sub">서비스 기획</span><div class="meta"><span>1차 면접</span><span>대회의실 B</span></div></div>
+          <span></span>
+        </a></li>
+      </ul>
+    </section>
+  </div>
+
+  <section class="card week" aria-labelledby="week-h">
+    <div class="card-h">
+      <h2 id="week-h">금주 일정표 <small>11/23(월) ~ 11/27(금)</small></h2>
+      <div class="legend" aria-hidden="true"><span><i class="k-ok"></i>확정</span><span><i class="k-done"></i>완료</span><span><i class="k-now"></i>지금</span></div>
+    </div>
+    <div class="b-wrap">
+      <div class="b-grid">
+        <div></div>
+        <div class="b-day"><b>월</b>11/23</div>
+        <div class="b-day"><b>화</b>11/24</div>
+        <div class="b-day today"><b>수</b>11/25<em>오늘</em></div>
+        <div class="b-day"><b>목</b>11/26</div>
+        <div class="b-day"><b>금</b>11/27</div>
+        <div class="b-time h">10:00</div>
+        <div class="b-cell"><a class="iv done" href="#" title="IT 개발자 1차 면접, 회의실 A"><span class="nm">정우진</span><span class="tx">IT 개발자 1차</span></a></div>
+        <div class="b-cell"><a class="iv done" href="#" title="서비스 기획 2차 면접, 대회의실 B"><span class="nm">강민서</span><span class="tx">서비스 기획 2차</span></a></div>
+        <div class="b-cell today"><a class="iv done" href="#" title="IT 개발자 1차 면접, 회의실 A"><span class="nm">조현우</span><span class="tx">IT 개발자 1차</span></a></div>
+        <div class="b-cell"><a class="iv" href="#" title="서비스 기획 2차 면접, 대회의실 B"><span class="nm">박지아</span><span class="tx">서비스 기획 2차</span></a></div>
+        <div class="b-cell"></div>
+        <div class="b-time">10:30</div>
+        <div class="b-cell"><a class="iv done" href="#" title="마케팅 매니저 1차 면접, 회의실 A"><span class="nm">이서연</span><span class="tx">마케팅 매니저 1차</span></a></div>
+        <div class="b-cell"><a class="iv done" href="#" title="브랜드 디자이너 1차 면접, 회의실 A"><span class="nm">신유나</span><span class="tx">브랜드 디자이너 1차</span></a></div>
+        <div class="b-cell today"><a class="iv done" href="#" title="서비스 기획 1차 면접, 회의실 A"><span class="nm">문서연</span><span class="tx">서비스 기획 1차</span></a></div>
+        <div class="b-cell"><a class="iv" href="#" title="마케팅 매니저 1차 면접, 회의실 A"><span class="nm">홍지우</span><span class="tx">마케팅 매니저 1차</span></a></div>
+        <div class="b-cell"></div>
+        <div class="b-time h">11:00</div>
+        <div class="b-cell"><a class="iv done" href="#" title="서비스 기획 1차 면접, 회의실 A"><span class="nm">윤서아</span><span class="tx">서비스 기획 1차</span></a></div>
+        <div class="b-cell"></div>
+        <div class="b-cell today"><i class="b-now" title="현재 11:20"></i></div>
+        <div class="b-cell"><a class="iv" href="#" title="IT 개발자 1차 면접, 회의실 A"><span class="nm">안도훈</span><span class="tx">IT 개발자 1차</span></a></div>
+        <div class="b-cell"></div>
+        <div class="b-gap">11:30~14:00 면접 없음</div>
+        <div class="b-time h">14:00</div>
+        <div class="b-cell"><a class="iv done" href="#" title="IT 개발자 1차 면접, 회의실 A"><span class="nm">강하준</span><span class="tx">IT 개발자 1차</span></a></div>
+        <div class="b-cell"></div>
+        <div class="b-cell today"><a class="iv" href="#" title="마케팅 매니저 2차 면접, 대회의실 B"><span class="nm">김도윤</span><span class="tx">마케팅 매니저 2차</span></a><a class="iv" href="#" title="IT 개발자 1차 면접, 회의실 A"><span class="nm">서민재</span><span class="tx">IT 개발자 1차</span></a></div>
+        <div class="b-cell"></div>
+        <div class="b-cell"></div>
+        <div class="b-time">14:30</div>
+        <div class="b-cell"><a class="iv done" href="#" title="마케팅 매니저 1차 면접, 회의실 A"><span class="nm">문채원</span><span class="tx">마케팅 매니저 1차</span></a></div>
+        <div class="b-cell"></div>
+        <div class="b-cell today"><a class="iv" href="#" title="IT 개발자 1차 면접, 회의실 A"><span class="nm">한예진</span><span class="tx">IT 개발자 1차</span></a></div>
+        <div class="b-cell"></div>
+        <div class="b-cell"></div>
+        <div class="b-time h">15:00</div>
+        <div class="b-cell"></div>
+        <div class="b-cell"><a class="iv done" href="#" title="IT 개발자 1차 면접, 회의실 A"><span class="nm">배준호</span><span class="tx">IT 개발자 1차</span></a></div>
+        <div class="b-cell today"><a class="iv" href="#" title="브랜드 디자이너 1차 면접, 대회의실 B"><span class="nm">노은지</span><span class="tx">브랜드 디자이너 1차</span></a></div>
+        <div class="b-cell"></div>
+        <div class="b-cell"><a class="iv" href="#" title="브랜드 디자이너 1차 면접, 회의실 A"><span class="nm">최도현</span><span class="tx">브랜드 디자이너 1차</span></a></div>
+        <div class="b-time">15:30</div>
+        <div class="b-cell"></div>
+        <div class="b-cell"><a class="iv done" href="#" title="마케팅 매니저 1차 면접, 회의실 A"><span class="nm">송지민</span><span class="tx">마케팅 매니저 1차</span></a></div>
+        <div class="b-cell today"><a class="iv" href="#" title="서비스 기획 1차 면접, 대회의실 B"><span class="nm">임재현</span><span class="tx">서비스 기획 1차</span></a></div>
+        <div class="b-cell"></div>
+        <div class="b-cell"><a class="iv" href="#" title="IT 개발자 1차 면접, 회의실 A"><span class="nm">권나영</span><span class="tx">IT 개발자 1차</span></a></div>
+        <div class="b-time h">16:00</div>
+        <div class="b-cell"></div>
+        <div class="b-cell"></div>
+        <div class="b-cell today"></div>
+        <div class="b-cell"><a class="iv" href="#" title="브랜드 디자이너 1차 면접, 대회의실 B"><span class="nm">유가온</span><span class="tx">브랜드 디자이너 1차</span></a></div>
+        <div class="b-cell"><a class="iv" href="#" title="마케팅 매니저 1차 면접, 회의실 A"><span class="nm">장우석</span><span class="tx">마케팅 매니저 1차</span></a></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cols">
+    <section class="card span-4" aria-labelledby="trend-h">
+      <div class="card-b">
+        <h2 id="trend-h" style="margin:0;font-size:15px">월별 지원자</h2>
+        <p class="sub-cap">최근 6개월, 전체 공고 기준</p>
+        <div class="bars" role="img" aria-label="6월 41명, 7월 58명, 8월 47명, 9월 73명, 10월 64명, 11월 52명">
+          <div class="c"><div class="zone"><b>41</b><i style="--v:48"></i></div><span>6월</span></div>
+          <div class="c"><div class="zone"><b>58</b><i style="--v:68"></i></div><span>7월</span></div>
+          <div class="c"><div class="zone"><b>47</b><i style="--v:55"></i></div><span>8월</span></div>
+          <div class="c"><div class="zone"><b>73</b><i style="--v:85"></i></div><span>9월</span></div>
+          <div class="c"><div class="zone"><b>64</b><i style="--v:75"></i></div><span>10월</span></div>
+          <div class="c cur"><div class="zone"><b>52</b><i style="--v:61"></i></div><span>11월</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card span-4" aria-labelledby="posting-h">
+      <div class="card-b">
+        <h2 id="posting-h" style="margin:0;font-size:15px">공고별 지원자</h2>
+        <p class="sub-cap">진행중인 공고 상위 5건</p>
+        <ul class="rank">
+          <li><div class="l"><span>마케팅 매니저</span><span class="cnt">92명</span></div><div class="bar"><i style="--r:100"></i></div></li>
+          <li><div class="l"><span>IT 개발자</span><span class="cnt">78명</span></div><div class="bar"><i style="--r:85"></i></div></li>
+          <li><div class="l"><span>서비스 기획</span><span class="cnt">61명</span></div><div class="bar"><i style="--r:66"></i></div></li>
+          <li><div class="l"><span>브랜드 디자이너</span><span class="cnt">44명</span></div><div class="bar"><i style="--r:48"></i></div></li>
+          <li><div class="l"><span>데이터 분석가</span><span class="cnt">29명</span></div><div class="bar"><i style="--r:32"></i></div></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="card span-4" aria-labelledby="funnel-h">
+      <div class="card-b">
+        <h2 id="funnel-h" style="margin:0;font-size:15px">채용 단계별 현황</h2>
+        <p class="sub-cap">진행중 공고 지원자 386명 기준, 공고별 단계 순서로 집계</p>
+        <ul class="rank">
+          <li><div class="l"><span>지원접수</span><span class="cnt">386명</span></div><div class="bar"><i style="--r:100"></i></div></li>
+          <li><div class="l"><span>서류전형</span><span class="cnt">214명<small>전 단계의 55%</small></span></div><div class="bar"><i style="--r:55"></i></div></li>
+          <li><div class="l"><span>1차 면접</span><span class="cnt">97명<small>전 단계의 45%</small></span></div><div class="bar"><i style="--r:25"></i></div></li>
+          <li><div class="l"><span>2차 면접</span><span class="cnt">41명<small>전 단계의 42%</small></span></div><div class="bar"><i style="--r:11"></i></div></li>
+          <li><div class="l"><span>최종 합격</span><span class="cnt">12명<small>전 단계의 29%</small></span></div><div class="bar"><i class="ok" style="--r:3"></i></div></li>
+        </ul>
+      </div>
+    </section>
+  </div>
+
+  <section class="memo" aria-labelledby="memo-h">
+    <h2 id="memo-h">시안 메모</h2>
+    <table>
+      <thead><tr><th>영역</th><th>지금</th><th>시안</th></tr></thead>
+      <tbody>
+        <tr><th>섹션 제목</th><td>카드 밖 회색 소제목과 카드 제목이 겹침</td><td>카드 제목만 남김. 건수는 제목 옆 숫자로 표기</td></tr>
+        <tr><th>현황 지표</th><td>아이콘 칩이 붙은 카드 3장이 첫 화면의 절반을 차지</td><td>평가자 화면과 같은 한 줄 요약 띠. 아이콘 제거, 세로 공간 절반</td></tr>
+        <tr><th>처리할 일</th><td>지연된 조율이 통계 아래에 있고, 지연은 배지 색으로만 구분</td><td>통계 바로 아래 왼쪽에 배치. 경과일을 숫자로 먼저 보이고, 2일 이상·5일 이상은 왼쪽 막대와 숫자 색으로 구분</td></tr>
+        <tr><th>확정 면접</th><td>시간이 오른쪽에 있고, 모든 행에 "확정" 배지가 반복됨</td><td>시간을 첫 열로 이동. 배지 삭제(제목이 이미 확정). 오늘만 파란색 강조</td></tr>
+        <tr><th>금주 일정표</th><td>요일별 상자 5개. 시각을 비교하기 어렵고 겹치는 면접도 구분 불가</td><td>면접이 있는 30분 슬롯만 남긴 압축 시간표. 같은 시각의 요일별 면접을 가로로 비교하고, 면접 없는 시간대는 한 줄로 접음. 동시 진행 면접은 한 칸에 나란히 배치하고 현재 시각선 표시. 모바일에서는 가로 스크롤</td></tr>
+        <tr><th>월별 차트</th><td>월 단위 이산 값을 면적 선 차트로 표현</td><td>막대 차트. 이번 달만 진하게</td></tr>
+        <tr><th>단계별 현황</th><td>단계마다 색이 달라 색이 의미를 갖지 않음</td><td>한 색으로 통일하고 전 단계 대비 비율 표시. 최종 합격만 녹색</td></tr>
+        <tr><th>서체</th><td>Nunito Sans 뒤 한글 폴백이 맑은 고딕</td><td>Pretendard (기존 평가 카드보드 시안과 동일)</td></tr>
+      </tbody>
+    </table>
+    <ul>
+      <li>시간표의 행은 이번 주 면접의 시작 시각을 서버에서 중복 없이 모아 정렬하면 만들어집니다. 시작 시각이 이미 응답에 있어 추가 쿼리는 필요 없습니다. 30분 격자에 맞지 않는 시작 시각(예 14:10)이 있으면 행이 늘어납니다.</li>
+      <li>현재 시각선은 면접이 없는 시간대에 걸리면 표시하지 않습니다.</li>
+      <li>전환율은 기존 단계별 인원수로 계산할 수 있어 추가 쿼리가 필요 없습니다.</li>
+      <li>월별 차트는 ECharts 시리즈를 line에서 bar로 바꾸고 이번 달 막대만 색을 다르게 지정하면 됩니다.</li>
+      <li>"오래 기다린 순" 정렬은 현재 서비스 정렬 기준을 확인한 뒤 맞춰야 합니다.</li>
+    </ul>
+  </section>
+</div>
+</body>
+</html>
