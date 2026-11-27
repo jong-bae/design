@@ -6,6 +6,7 @@
 | --- | --- | --- |
 | [sws](sws/) | 권한별 대시보드 시안 v2 (PNG 6종) | [sws/index.html](sws/index.html) |
 | [ats](ats/) | 카드보드·칸반 단계 구분 검토 | [card-review.html](ats/card-review.html), [kanban-review.html](ats/kanban-review.html) |
+| [osd](osd/) | 온라인서비스데스크 UI 시안 3종 (접수대장·오미자·약장) | [osd/index.html](osd/index.html) |
 
 ## 새 프로젝트 추가
 

@@ -1,0 +1,198 @@
+<!-- 2안 오미자: 목록과 미리보기를 나란히 둔 작업대형 헬프데스크 관리자 화면 (로그인·목록·처리·통계) -->
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>서비스데스크 시안 2 오미자</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/variable/woff2/SUIT-Variable.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- 로그인 (SCR-00) -->
+<section class="login" data-screen="login">
+  <div class="login-box">
+    <div class="brand"><svg class="mark" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="12" cy="12" r="2.5" fill="currentColor"/></svg><span>서비스데스크</span></div>
+    <h1>그룹웨어에서 접속해 주세요</h1>
+    <p>J-WITH 첫 화면의 온라인문의 배너를 누르면 로그인 없이 바로 들어옵니다.</p>
+    <a class="btn pri wide" href="#list">J-WITH 열기</a>
+    <details>
+      <summary>그룹웨어를 쓸 수 없나요</summary>
+      <p class="hint">관리자 비상 로그인은 사내망에서만 열립니다.</p>
+      <form onsubmit="location.hash='list';return false">
+        <label>사원코드<input type="text" autocomplete="username" required></label>
+        <label>비밀번호<input type="password" autocomplete="current-password" required></label>
+        <button class="btn wide" type="submit">로그인</button>
+      </form>
+    </details>
+  </div>
+</section>
+
+<div class="shell">
+  <header class="top">
+    <a class="brand" href="#list"><svg class="mark" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="3"/><circle cx="12" cy="12" r="2.5" fill="currentColor"/></svg><span>서비스데스크</span></a>
+    <label class="gsearch"><span data-i="search"></span><input type="search" placeholder="등록번호나 내용으로 찾기"></label>
+    <div class="top-r">
+      <button class="icon-btn" aria-label="알림"><span data-i="bell"></span><i class="dot"></i></button>
+      <div class="user"><span class="av">정</span><div><b>정다은 프로</b><small>인사지원팀, 마스터</small></div></div>
+      <a class="lnk-out" href="#login">로그아웃</a>
+    </div>
+  </header>
+
+  <nav class="side" aria-label="주 메뉴">
+    <a href="#"><span data-i="dash"></span>현황 대시보드</a>
+    <a href="#list" data-nav="list"><span data-i="inbox"></span>팀 문의함<em class="n">5</em></a>
+    <a href="#"><span data-i="help"></span>미분류 문의함<em class="n">7</em></a>
+    <a href="#"><span data-i="list"></span>처리현황</a>
+    <a href="#stats" data-nav="stats"><span data-i="chart"></span>집계현황</a>
+    <details class="adm">
+      <summary><span data-i="gear"></span>관리<span class="cv" data-i="chev"></span></summary>
+      <a href="#">카테고리·문의유형</a><a href="#">사용자</a><a href="#">역할·메뉴·직책</a><a href="#">SSO 설정</a><a href="#">운영 설정</a>
+    </details>
+  </nav>
+
+  <main>
+    <!-- 팀 문의함 (SCR-A02) 목록과 미리보기 -->
+    <section class="work" data-screen="list">
+      <div class="queue">
+        <div class="q-head">
+          <h1>팀 문의함</h1>
+          <div class="seg" role="tablist"><button role="tab" aria-selected="false">미배정 <b>5</b></button><button role="tab" aria-selected="true">팀 전체 <b>11</b></button></div>
+          <div class="q-tools">
+            <label class="field"><span data-i="search"></span><input type="search" placeholder="등록번호, 내용, 요청자"></label>
+            <select aria-label="팀"><option>의료정보1팀</option><option>의료정보2팀</option></select>
+          </div>
+          <div class="chips"><button aria-pressed="false">긴급만</button><button aria-pressed="false">오류문의</button><button aria-pressed="false">사용문의</button><button aria-pressed="false">목표 초과</button></div>
+        </div>
+        <ul class="q-list" id="queue"></ul>
+      </div>
+      <article class="preview" id="preview" aria-live="polite"></article>
+    </section>
+
+    <!-- 문의 처리 상세 (SCR-A04) -->
+    <section class="page" data-screen="detail">
+      <a class="back" href="#list"><span data-i="back"></span>팀 문의함</a>
+      <div class="d-head">
+        <div><h1>2026-000129</h1><div class="d-sub"><span id="dst"></span><span>EMR</span><span>오류문의</span><span>의료정보1팀</span></div></div>
+        <div class="acts"><button class="btn">반납</button><button class="btn">이관</button><button class="btn">보류</button><button class="btn pri">완료 처리</button></div>
+      </div>
+      <div class="cols">
+        <div class="conv">
+          <div class="msg first">
+            <div class="who"><span class="av">이</span><b>이도윤 원장</b><small>대전병원 진료부</small><time>11-25 17:30</time></div>
+            <p class="pre" id="dtext"></p>
+            <div class="file"><span data-i="clip"></span>처방화면_캡처.png<small>212KB</small></div>
+          </div>
+          <ol class="tl" id="tl"></ol>
+          <form class="composer" onsubmit="return false">
+            <div class="ctabs"><button type="button" class="on" data-m="reply">답변</button><button type="button" data-m="memo"><span data-i="lock"></span>내부메모</button></div>
+            <textarea rows="3" placeholder="요청자에게 보낼 답변을 입력합니다."></textarea>
+            <div class="cbar"><button class="btn" type="button"><span data-i="clip"></span>파일 첨부</button><button class="btn pri" type="submit">등록</button></div>
+          </form>
+        </div>
+        <aside class="info">
+          <h2>처리 정보</h2>
+          <div class="f"><label>담당자</label><div class="v">홍길동 프로 <button class="btn sm">재배정</button></div></div>
+          <div class="f"><label for="t">업무</label><select id="t"><option>EMR</option><option>처방전달</option></select></div>
+          <div class="f"><label for="y">문의유형</label><select id="y"><option>오류문의</option><option>사용문의</option></select></div>
+          <div class="f"><label class="chk"><input type="checkbox">긴급 문의로 처리</label></div>
+          <div class="f"><label>첫 응답 목표</label><div class="v">완료, 15분 만에 응답</div></div>
+          <div class="f"><label>완료 목표</label><div class="v">남은 1일 2시간</div><div class="bar"><i style="width:22%"></i></div></div>
+          <div class="f"><label>누적 보류 시간</label><div class="v">없음</div></div>
+          <div class="f"><label>이관 이력</label><div class="v">없음</div></div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- 집계현황 (SCR-S02) -->
+    <section class="page" data-screen="stats">
+      <div class="d-head">
+        <div><h1>집계현황</h1><div class="d-sub"><span>2026년 1월부터 11월까지</span><span>전체 팀</span></div></div>
+        <button class="btn"><span data-i="down"></span>엑셀 다운로드</button>
+      </div>
+      <form class="bar-f" onsubmit="return false">
+        <div class="seg"><button type="button" aria-selected="false">일</button><button type="button" aria-selected="true">월</button><button type="button" aria-selected="false">분기</button></div>
+        <label>기간<input type="month" value="2026-01"> ~ <input type="month" value="2026-11"></label>
+        <label>집계기준<select><option>팀</option><option>담당자</option><option>업무</option><option>문의유형</option><option>요청자 소속</option></select></label>
+        <button class="btn pri" type="submit">조회</button>
+      </form>
+      <div class="s-grid">
+        <div class="panel"><h2>월별 접수와 완료</h2><div class="legend"><i class="lg-bar"></i>접수<i class="lg-line"></i>완료</div><div id="trend" class="chart"></div></div>
+        <dl class="nums" id="metrics"></dl>
+      </div>
+      <div class="s-grid two">
+        <div class="panel"><h2>만족도</h2><div class="don"><div id="donut" class="donut"></div><ul class="sat" id="sat"></ul></div></div>
+        <div class="panel"><h2>팀별 접수 건수</h2><div id="hb"></div></div>
+      </div>
+      <div class="panel flush">
+        <h2 class="pad">팀별 지표</h2>
+        <div class="scroll"><table class="tbl">
+          <thead><tr><th>팀</th><th class="r">접수</th><th class="r">완료</th><th class="r">미처리</th><th class="r">보류</th><th>완료율</th><th class="r">평균 첫 응답</th><th class="r">평균 처리소요</th><th class="r">목표 준수율</th><th class="r">만족도</th></tr></thead>
+          <tbody id="mx"></tbody>
+        </table></div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script src="../_shared/data.js"></script>
+<script>
+const D = DESK;
+const tagOf = (r) => (r.urgent ? '<span class="tag red">긴급</span>' : '') + (r.priv ? '<span class="tag">비공개</span>' : '');
+
+// 목록
+const ul = document.getElementById('queue');
+ul.innerHTML = D.rows.map((r, i) => `
+  <li><button class="q ${r.urgent ? 'urgent' : ''}" data-idx="${i}" aria-selected="${i === 1}">
+    <span class="q1"><b>${r.who}</b><span>${r.org} ${r.dept}</span><time>${r.at.slice(5)}</time></span>
+    <span class="q2">${r.text}</span>
+    <span class="q3">${D.badge(r.st)}${tagOf(r)}<span>${r.task}</span><span>${r.type}</span><span class="age ${r.pct > 1 ? 'over' : ''}">${r.age && r.st !== 'done' && r.st !== 'cancel' ? (r.st === 'hold' ? r.age : '경과 ' + r.age) : ''}</span></span>
+  </button></li>`).join('');
+
+// 미리보기
+const pv = document.getElementById('preview');
+const show = (i) => {
+  const r = D.rows[i];
+  ul.querySelectorAll('.q').forEach((b) => b.setAttribute('aria-selected', b.dataset.idx == i));
+  const open = !r.owner && r.st === 'reg';
+  pv.innerHTML = `
+    <div class="pv-head"><div><h2><a href="#detail">${r.no}</a></h2><div class="pv-b">${D.badge(r.st)}${tagOf(r)}</div></div>
+    <div class="acts">${open ? '<button class="btn">배정</button><button class="btn pri">내가 할게요</button>' : '<a class="btn" href="#detail">처리 화면 열기</a>'}</div></div>
+    <p class="pv-text">${r.text}</p>
+    <dl class="pv-kv">
+      <dt>요청자</dt><dd>${r.who}, ${r.org} ${r.dept}</dd>
+      <dt>연락처</dt><dd>내선 ${3000 + i * 17}</dd>
+      <dt>업무</dt><dd>${r.task}</dd>
+      <dt>문의유형</dt><dd>${r.type}</dd>
+      <dt>등록일시</dt><dd>${r.at}</dd>
+      <dt>담당자</dt><dd>${r.owner || '아직 정해지지 않았습니다'}</dd>
+    </dl>`;
+};
+ul.addEventListener('click', (e) => { const b = e.target.closest('.q'); if (b) show(b.dataset.idx); });
+show(1);
+
+// 처리 상세
+document.getElementById('dst').innerHTML = D.badge('prog');
+document.getElementById('dtext').textContent = D.detail.text;
+const kind = { reply: '답변', cmt: '댓글', memo: '내부메모' };
+document.getElementById('tl').innerHTML = D.detail.timeline.slice(1).map((t) => t.k === 'sys'
+  ? `<li class="sys"><span>${t.text}</span><time>${t.at.slice(5)}</time></li>`
+  : `<li class="msg ${t.k}"><div class="who"><span class="av">${t.who[0]}</span><b>${t.who}</b><small>${kind[t.k]}</small>${t.k === 'memo' ? '<small class="lockn"><span data-i="lock"></span>요청자에게 보이지 않음</small>' : ''}<time>${t.at.slice(5)}</time></div><p>${t.text}</p></li>`).join('');
+document.querySelectorAll('.ctabs button').forEach((b) => b.onclick = () => {
+  document.querySelectorAll('.ctabs button').forEach((x) => x.classList.toggle('on', x === b));
+  const f = b.closest('.composer'); f.classList.toggle('memo', b.dataset.m === 'memo');
+  f.querySelector('textarea').placeholder = b.dataset.m === 'memo' ? '담당자끼리만 보는 메모입니다.' : '요청자에게 보낼 답변을 입력합니다.';
+});
+
+// 통계
+document.getElementById('metrics').innerHTML = D.metrics.map(([k, v, u]) => `<div><dt>${k}</dt><dd>${v}<small>${u}</small></dd></div>`).join('');
+D.trend(document.getElementById('trend'));
+D.donut(document.getElementById('donut'));
+document.getElementById('sat').innerHTML = D.sat.map((s) => `<li><i class="a${s.k}"></i>${s.k}점<b>${s.n}명</b></li>`).join('');
+document.getElementById('hb').innerHTML = D.teams.map((t) => `<div class="hb"><span>${t.n}</span><div><i style="width:${t.recv / 512 * 100}%"></i></div><b>${t.recv}</b></div>`).join('');
+document.getElementById('mx').innerHTML = D.teams.map((t) => `<tr><td>${t.n}</td><td class="r">${t.recv}</td><td class="r">${t.done}</td><td class="r">${t.open}</td><td class="r">${t.hold}</td><td><span class="rate"><i style="width:${t.rate}"></i></span>${t.rate}</td><td class="r">${t.first}</td><td class="r">${t.span}</td><td class="r ${parseFloat(t.sla) < 90 ? 'over' : ''}">${t.sla}</td><td class="r">${t.sat}</td></tr>`).join('');
+D.init();
+</script>
+</body>
+</html>
